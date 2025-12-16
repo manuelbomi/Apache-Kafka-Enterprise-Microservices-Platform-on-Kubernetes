@@ -78,4 +78,28 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 
 - Resilience to failures
 
+---
+
+## Microservices Architecture Diagram
+
+                        +-------------------+
+                        |   Kafka Producer  |
+                        |  (Job / Events)   |
+                        +---------+---------+
+                                  |
+             -------------------------------------------------
+             |                    |                         |
+        +----v----+          +----v----+               +----v----+
+        | Orders  |          | Payments|               | Shipping|
+        | Consumer|          | Consumer|               | Consumer|
+        +----+----+          +----+----+               +----+----+
+             |                    |                         |
+        orders topic         payments topic            shipping topic
+             |                    |                         |
+        +---------------------------------------------------------+
+        |               Apache Kafka (3 Brokers, KRaft)          |
+        |        StatefulSet, Persistent Storage, Replication    |
+        +---------------------------------------------------------+
+
+
 
