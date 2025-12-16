@@ -334,6 +334,8 @@ docker build -t payments-consumer:latest -f Dockerfile .
 docker build -t shipping-consumer:latest -f Dockerfile .
 ```
 
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/ec66b756-acef-41af-baeb-b2bf97606f1a" />
+
 ---
 
 
@@ -356,6 +358,10 @@ kubectl logs kafka-2
 ```
 
 ##### Ensure all 3 brokers are running and the KRaft quorum is formed.
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/aff8eb35-25b6-4ef7-8c09-bb5cec384a3d" />
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/5a2c4d03-9358-4806-bb5c-f7e3d7e2b0a0" />
 
 ---
 
@@ -390,6 +396,8 @@ kubectl exec -it kafka-0 -- \
 
 ```
 
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/0bee5cc2-9c4e-4e4e-805e-27b9dc7f5a36" />
+
 ---
 
 ##### Deploy Consumer Microservices
@@ -399,6 +407,8 @@ kubectl apply -f k8s/orders-consumer.yaml
 kubectl apply -f k8s/payments-consumer.yaml
 kubectl apply -f k8s/shipping-consumer.yaml
 ```
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/7621a298-83b4-4875-99c8-42e3be5cbbca" />
 
 ---
 
@@ -417,6 +427,15 @@ kubectl logs -f deploy/payments-consumer
 kubectl logs -f deploy/shipping-consumer
 kubectl logs -f job/kafka-producer
 ```
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/ec5053d0-49c2-4219-b7c3-5e81c18c5605" />
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/bb5525aa-3ea3-4f76-98b3-a9eac0f8c6b7" />
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/db77dd6d-96af-4741-8748-4d37d5bad9e1" />
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/b9f05048-038e-46b1-ad80-01be688a05b0" />
+
 ---
 
 ##### Sanity Check: Broker Visibility 
