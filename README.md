@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-CThis repository demonstrates a production-grade, enterprise-level event-driven microservices architecture built using:
+This repository demonstrates a production-grade, enterprise-level event-driven microservices architecture built using:
 
 - [x] Apache Kafka (KRaft mode, no Zookeeper)
 
