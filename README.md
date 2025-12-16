@@ -20,7 +20,7 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 
 ## Why Microservices Architecture?
 
-▩ Domain Isolation
+#### ▩ <ins>Domain Isolation</ins>
 
 ##### Each business capability is isolated into its own microservice:
 
@@ -34,7 +34,9 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 
 ##### This mirrors real enterprise systems, where teams own specific domains independently.
 
-◙ Independent Deployment
+---
+
+#### ◙ <ins>Independent Deployment</ins>
 
 ##### Each microservice:
 
@@ -42,7 +44,9 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 
 - Has its own Dockerfile
 
-##### Is deployed via its own Kubernetes Deployment or Job
+---
+
+##### ◙ <ins>Is deployed via its own Kubernetes Deployment or Job</ins>
 
 ##### This allows:
 
@@ -52,9 +56,11 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 
 - Fault isolation
 
-♣ Loose Coupling via Kafka
+- Loose Coupling via Kafka
 
-##### Services never call each other directly.
+---
+
+#### ♣  <ins>Services never call each other directly</ins>.
 
 ##### Instead, they communicate asynchronously through Kafka topics:
 
