@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-consumer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payments-consumer
+  template:
+    metadata:
+      labels:
+        app: payments-consumer
+    spec:
+      containers:
+        - name: consumer
+          image: payments-consumer:latest
+          command: ["python", "consumer_payments.py"]

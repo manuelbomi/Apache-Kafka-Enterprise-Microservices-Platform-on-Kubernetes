@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Python 3.13 (kafka_projects_3_k8s_production_grade)" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 (kafka_projects_3_k8s_production_grade)" project-jdk-type="Python SDK" />
+</project>

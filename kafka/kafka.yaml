@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+spec:
+  serviceName: kafka
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kafka
+
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ReadWriteOnce]
+        resources:
+          requests:
+            storage: 10Gi
+
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      containers:
+        - name: kafka
+          image: apache/kafka:3.7.0
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - sh
+            - -c
+            - |
+              NODE_ID=${HOSTNAME##*-}
+              DATA_DIR=/var/lib/kafka/data
+              CONFIG=/tmp/server.properties
+
+              cat <<EOF > $CONFIG
+              process.roles=broker,controller
+              node.id=$NODE_ID
+
+              controller.quorum.voters=0@kafka-0.kafka:9093,1@kafka-1.kafka:9093,2@kafka-2.kafka:9093
+
+              listeners=PLAINTEXT://:9092,CONTROLLER://:9093
+              advertised.listeners=PLAINTEXT://${HOSTNAME}.kafka:9092
+              controller.listener.names=CONTROLLER
+              listener.security.protocol.map=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+
+              log.dirs=$DATA_DIR
+
+              offsets.topic.replication.factor=3
+              transaction.state.log.replication.factor=3
+              transaction.state.log.min.isr=2
+              auto.create.topics.enable=true
+              EOF
+
+              if [ ! -f "$DATA_DIR/meta.properties" ]; then
+                /opt/kafka/bin/kafka-storage.sh format \
+                  --cluster-id=abcdefghijklmnopqrstuv \
+                  --config $CONFIG
+              fi
+
+              exec /opt/kafka/bin/kafka-server-start.sh $CONFIG
+
+          ports:
+            - containerPort: 9092
+              name: broker
+            - containerPort: 9093
+              name: controller
+
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/kafka/data
