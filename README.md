@@ -280,6 +280,8 @@ enterprise-kafka-platform-k8s/
 │
 └── README.md                     # Project overview, architecture, and instructions
 
+```
+
 ---
 
 ## ❆ Deployment Guide (Step-by-Step)
