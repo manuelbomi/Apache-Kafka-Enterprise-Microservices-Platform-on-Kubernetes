@@ -333,6 +333,17 @@ kubectl logs -f job/kafka-producer
 ```
 ---
 
+##### Sanity Check: Broker Visibility 
+
+```python
+kubectl exec -it kafka-0 -- \
+/opt/kafka/bin/kafka-broker-api-versions.sh \
+--bootstrap-server kafka-0.kafka:9092
+
+```
+
+---
+
 ## Enterprise Use Cases
 
 ##### This architecture applies directly to:
