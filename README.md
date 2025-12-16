@@ -258,6 +258,62 @@ kubectl delete statefulset kafka
 kubectl delete pvc -l app=kafka
 ```
 
+---
+
+##### Verify Kafka Cluster Formation
+
+```python
+kubectl get pods -l app=kafka -w
+kubectl logs kafka-0
+kubectl logs kafka-1
+kubectl logs kafka-2
+```
+
+##### Ensure all 3 brokers are running and the KRaft quorum is formed.
+
+---
+
+##### Verify Kafka Environment
+
+```python
+kubectl exec -it kafka-0 -- env | findstr KAFKA_CFG_ADVERTISED_LISTENERS
+kubectl exec -it kafka-1 -- env | findstr KAFKA_CFG_ADVERTISED_LISTENERS
+kubectl exec -it kafka-2 -- env | findstr KAFKA_CFG_ADVERTISED_LISTENERS
+```
+
+---
+
+##### Create Kafka Topics
+
+```python
+
+kubectl exec -it kafka-0 -- \
+/opt/kafka/bin/kafka-topics.sh \
+--bootstrap-server kafka-0.kafka:9092 \
+--create --topic orders --partitions 3 --replication-factor 3
+
+kubectl exec -it kafka-0 -- \
+/opt/kafka/bin/kafka-topics.sh \
+--bootstrap-server kafka-0.kafka:9092 \
+--create --topic payments --partitions 3 --replication-factor 3
+
+kubectl exec -it kafka-0 -- \
+/opt/kafka/bin/kafka-topics.sh \
+--bootstrap-server kafka-0.kafka:9092 \
+--create --topic shipping --partitions 3 --replication-factor 3
+
+```
+
+---
+
+##### Deploy Consumer Microservices
+
+```python
+kubectl apply -f k8s/orders-consumer.yaml
+kubectl apply -f k8s/payments-consumer.yaml
+kubectl apply -f k8s/shipping-consumer.yaml
+```
+
 
 
 
