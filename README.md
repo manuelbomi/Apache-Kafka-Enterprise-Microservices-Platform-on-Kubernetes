@@ -196,9 +196,65 @@ Consumers can:
 > 
 ---
 
-> [!TIP]
-> Helpful advice for doing things better or more easily.
+## Why Kubernetes?
 
+#### Kubernetes is essential for enterprise-grade systems because it provides:
+
+#### <ins>  Self-Healing</ins>
+
+- Pods restart automatically
+
+- Failed containers are replaced
+
+#### <ins>  Horizontal Scaling</ins>
+
+- Scale consumers independently
+
+- Increase throughput without code changes
+
+#### <ins>  Service Discovery</ins>
+
+- Kafka accessed via stable service DNS (kafka:9092)
+
+- No hard-coded IPs
+
+#### <ins> Rolling Updates</ins>
+
+- Zero-downtime deployments
+
+- Safe consumer restarts
+
+---
+
+## Why Docker Desktop Still Counts as Enterprise-Grade?
+
+#### While Docker Desktop is used locally, the architecture itself is 100% production-grade:
+
+- Same Docker images run in cloud Kubernetes clusters
+
+- Same manifests apply to EKS, GKE, AKS
+
+- Same Kafka setup works on bare metal or cloud
+
+#### Docker Desktop is simply a local control plane for learning, validation, and CI pipelines.
+
+---
+
+## ❆ Deployment Guide (Step-by-Step)
+
+#### ▩ Clean Previous Kafka State
+
+##### Ensure that you have Docker Desktop running. Turn on the Kubernetes cluster (Kind) with at least 3 pods on the Docker Desktop.
+
+##### Clone the project from here: 
+
+
+##### On the PyCharm terminal, at the root of the project
+
+```python
+kubectl delete statefulset kafka
+kubectl delete pvc -l app=kafka
+```
 
 
 
