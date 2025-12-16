@@ -334,7 +334,7 @@ docker build -t payments-consumer:latest -f Dockerfile .
 docker build -t shipping-consumer:latest -f Dockerfile .
 ```
 
-<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/ec66b756-acef-41af-baeb-b2bf97606f1a" />
+
 
 ---
 
@@ -427,6 +427,8 @@ kubectl logs -f deploy/payments-consumer
 kubectl logs -f deploy/shipping-consumer
 kubectl logs -f job/kafka-producer
 ```
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/ec66b756-acef-41af-baeb-b2bf97606f1a" />
 
 <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/ec5053d0-49c2-4219-b7c3-5e81c18c5605" />
 
