@@ -246,7 +246,9 @@ Consumers can:
 
 ##### Ensure that you have Docker Desktop running. Turn on the Kubernetes cluster (Kind) with at least 3 pods on the Docker Desktop.
 
-##### Clone the project from here: 
+##### Clone the project from here: https://github.com/manuelbomi/Apache-Kafka-Enterprise-Microservices-Platform-on-Kubernetes.git
+
+cd 
 
 
 ##### On the PyCharm terminal, at the root of the project
