@@ -344,6 +344,16 @@ kubectl exec -it kafka-0 -- \
 
 ---
 
+##### Restart Everything (in case of any isssues)
+
+```python
+kubectl rollout restart deploy/orders-consumer
+kubectl rollout restart deploy/payments-consumer
+kubectl rollout restart deploy/shipping-consumer
+```
+
+---
+
 ## Enterprise Use Cases
 
 ##### This architecture applies directly to:
