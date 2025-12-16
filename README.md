@@ -321,6 +321,16 @@ kubectl apply -f k8s/shipping-consumer.yaml
 ```python
 kubectl apply -f k8s/producer-job.yaml
 ```
+---
+
+##### Observe Logs
+
+```python
+kubectl logs -f deploy/orders-consumer
+kubectl logs -f deploy/payments-consumer
+kubectl logs -f deploy/shipping-consumer
+kubectl logs -f job/kafka-producer
+```
 
 
 
