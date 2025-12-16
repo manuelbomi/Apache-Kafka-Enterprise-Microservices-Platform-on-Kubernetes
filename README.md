@@ -352,6 +352,13 @@ kubectl rollout restart deploy/payments-consumer
 kubectl rollout restart deploy/shipping-consumer
 ```
 
+##### Producer restart:
+
+```python
+kubectl delete job kafka-producer
+kubectl apply -f k8s/producer-job.yaml
+```
+
 ---
 
 ## Enterprise Use Cases
