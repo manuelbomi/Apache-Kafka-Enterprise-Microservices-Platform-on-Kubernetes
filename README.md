@@ -248,10 +248,10 @@ Consumers can:
 
 ##### Clone the project from here: https://github.com/manuelbomi/Apache-Kafka-Enterprise-Microservices-Platform-on-Kubernetes.git
 
-cd 
+##### cd to the rook of the project
 
 
-##### On the PyCharm terminal, at the root of the project
+##### On the PyCharm (or VSCode) terminal, at the root of the project, run the folloiwng codes
 
 ```python
 kubectl delete statefulset kafka
