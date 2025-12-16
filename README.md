@@ -361,6 +361,29 @@ kubectl apply -f k8s/producer-job.yaml
 
 ---
 
+#### Producer Event Examples
+```python
+send_event("orders", {
+    "order_id": str(uuid.uuid4()),
+    "user": "Alice Smith",
+    "item": "Laptop",
+    "quantity": 2
+})
+
+send_event("payments", {
+    "payment_id": str(uuid.uuid4()),
+    "order_amount": 1200,
+    "currency": "USD",
+    "status": "PAID"
+})
+
+send_event("shipping", {
+    "shipment_id": str(uuid.uuid4()),
+    "carrier": "UPS",
+    "status": "DISPATCHED"
+})
+``` 
+
 ## Enterprise Use Cases
 
 ##### This architecture applies directly to:
