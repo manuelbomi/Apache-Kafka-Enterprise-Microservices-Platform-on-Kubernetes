@@ -22,53 +22,54 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 
 ▩ Domain Isolation
 
-Each business capability is isolated into its own microservice:
+##### Each business capability is isolated into its own microservice:
 
-orders-consumer
+- orders-consumer
 
-payments-consumer
+- payments-consumer
 
-shipping-consumer
+- shipping-consumer
 
-kafka-producer (event generator)
+- kafka-producer (event generator)
 
-This mirrors real enterprise systems, where teams own specific domains independently.
+##### This mirrors real enterprise systems, where teams own specific domains independently.
 
 ◙ Independent Deployment
 
-Each microservice:
+##### Each microservice:
 
-Has its own Python code
+- Has its own Python code
 
-Has its own Dockerfile
+- Has its own Dockerfile
 
-Is deployed via its own Kubernetes Deployment or Job
+##### Is deployed via its own Kubernetes Deployment or Job
 
-This allows:
+##### This allows:
 
-Independent scaling
+- Independent scaling
 
-Independent updates
+- Independent updates
 
-Fault isolation
+- Fault isolation
 
-▩ Loose Coupling via Kafka
+♣ Loose Coupling via Kafka
 
-Services never call each other directly.
-Instead, they communicate asynchronously through Kafka topics:
+##### Services never call each other directly.
 
-orders
+##### Instead, they communicate asynchronously through Kafka topics:
 
-payments
+- orders
 
-shipping
+- payments
 
-This eliminates tight coupling and enables:
+- shipping
 
-Horizontal scaling
+##### This eliminates tight coupling and enables:
 
-Replayability
+- Horizontal scaling
 
-Resilience to failures
+- Replayability
+
+- Resilience to failures
 
 
