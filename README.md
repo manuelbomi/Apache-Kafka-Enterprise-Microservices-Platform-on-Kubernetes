@@ -314,6 +314,14 @@ kubectl apply -f k8s/payments-consumer.yaml
 kubectl apply -f k8s/shipping-consumer.yaml
 ```
 
+---
+
+##### Deploy Producer Job
+
+```python
+kubectl apply -f k8s/producer-job.yaml
+```
+
 
 
 
