@@ -296,7 +296,7 @@ enterprise-kafka-platform-k8s/
 
 ---
 
-##### Set up Docker images for producer and consumers
+#### Set up Docker images for producer and consumers
 
 #### Each consumer and the producer need their own Docker image. Open your terminal in the root project folder.
 
