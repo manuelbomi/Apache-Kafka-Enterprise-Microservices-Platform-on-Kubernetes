@@ -89,17 +89,59 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
                                   |
              -------------------------------------------------
              |                    |                         |
-        +----v----+          +----v----+               +----v----+
-        | Orders  |          | Payments|               | Shipping|
-        | Consumer|          | Consumer|               | Consumer|
-        +----+----+          +----+----+               +----+----+
+        +----v----+          +----v----+               +----v-----+
+        | Orders  |          | Payments|               | Shipping |
+        | Consumer|          | Consumer|               | Consumer |
+        +----+----+          +----+----+               +----+-----+
              |                    |                         |
         orders topic         payments topic            shipping topic
              |                    |                         |
         +---------------------------------------------------------+
-        |               Apache Kafka (3 Brokers, KRaft)          |
-        |        StatefulSet, Persistent Storage, Replication    |
+        |               Apache Kafka (3 Brokers, KRaft)           |
+        |        StatefulSet, Persistent Storage, Replication     |
         +---------------------------------------------------------+
+
+---
+
+## Microservices Breakdown
+
+#### <ins>Orders Service</ins>
+
+Code: consumer_orders.py
+
+- Containerized via Docker
+
+- Consumes from orders topic
+
+- Consumer group: orders-service
+
+#### <ins>Payments Service</ins>
+
+Code: consumer_payments.py
+
+- Consumes from payments topic
+
+- Handles financial events
+
+- Consumer group: payments-service
+
+#### <ins>Shipping Service</ins>
+
+Code: consumer_shipping.py
+
+- Consumes from shipping topic
+
+- Tracks fulfillment lifecycle
+
+#### <ins>Producer Job</ins>
+
+Code: producer.py
+
+- Runs as a Kubernetes Job
+
+- Publishes events to all topics
+
+- Simulates upstream enterprise systems (web apps, APIs, ERP systems)
 
 
 
