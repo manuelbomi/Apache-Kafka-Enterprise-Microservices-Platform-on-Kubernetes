@@ -15,3 +15,60 @@ CThis repository demonstrates a production-grade, enterprise-level event-driven 
 ##### The system models a real-world enterprise workflow consisting of Orders, Payments, and Shipping domains communicating asynchronously via Kafka topics.
 
 ##### Each domain is implemented as a fully independent microservice, deployed and orchestrated using Kubernetes.
+
+---
+
+## Why Microservices Architecture?
+
+▩ Domain Isolation
+
+Each business capability is isolated into its own microservice:
+
+orders-consumer
+
+payments-consumer
+
+shipping-consumer
+
+kafka-producer (event generator)
+
+This mirrors real enterprise systems, where teams own specific domains independently.
+
+◙ Independent Deployment
+
+Each microservice:
+
+Has its own Python code
+
+Has its own Dockerfile
+
+Is deployed via its own Kubernetes Deployment or Job
+
+This allows:
+
+Independent scaling
+
+Independent updates
+
+Fault isolation
+
+▩ Loose Coupling via Kafka
+
+Services never call each other directly.
+Instead, they communicate asynchronously through Kafka topics:
+
+orders
+
+payments
+
+shipping
+
+This eliminates tight coupling and enables:
+
+Horizontal scaling
+
+Replayability
+
+Resilience to failures
+
+
