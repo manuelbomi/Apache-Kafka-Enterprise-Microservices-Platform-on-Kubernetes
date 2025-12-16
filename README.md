@@ -191,10 +191,13 @@ Consumers can:
 
 - Production-ready controller quorum
 
-> [!Tip] This is not a toy Kafka setup — it mirrors modern Kafka deployments.
+> [!TIP] This is not a toy Kafka setup — it mirrors modern Kafka deployments.
 >
 > 
 ---
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
 
 
 
