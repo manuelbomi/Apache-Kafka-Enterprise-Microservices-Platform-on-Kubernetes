@@ -240,6 +240,48 @@ Consumers can:
 
 ---
 
+## Project Structure
+
+```python
+enterprise-kafka-platform-k8s/
+│
+├── kafka/
+│   ├── kafka-bitnami.yaml        # Kafka StatefulSet (KRaft mode, 3 brokers)
+│   └── kafka-service.yaml        # Headless service for broker discovery
+│
+├── consumers/
+│   ├── orders/
+│   │   ├── Dockerfile            # Orders consumer image (runs consumer_orders.py)
+│   │   └── consumer_orders.py    # Orders domain Kafka consumer
+|   |   └── requirements.txt
+│   │
+│   ├── payments/
+│   │   ├── Dockerfile            # Payments consumer image (runs consumer_payments.py)
+│   │   └── consumer_payments.py  # Payments domain Kafka consumer
+|   |   └── requirements.txt
+│   │
+│   └── shipping/
+│       ├── Dockerfile            # Shipping consumer image (runs consumer_shipping.py)
+│       └── consumer_shipping.py  # Shipping domain Kafka consumer
+|       └── requirements.txt
+│
+├── producer/
+│   ├── Dockerfile                # Producer container image (runs producer.py)
+│   └── producer.py               # Event publisher for orders, payments, shipping
+|   └── requirements.txt
+│
+├── k8s/
+│   ├── orders-consumer.yaml      # Orders Deployment (scalable replicas)
+│   ├── payments-consumer.yaml    # Payments Deployment (scalable replicas)
+│   ├── shipping-consumer.yaml    # Shipping Deployment (scalable replicas)
+│   └── producer-job.yaml         # One-off Kafka producer Job
+│
+├── requirements.txt              # Shared Python dependencies for all services
+│
+└── README.md                     # Project overview, architecture, and instructions
+
+---
+
 ## ❆ Deployment Guide (Step-by-Step)
 
 #### ▩ Clean Previous Kafka State
@@ -249,6 +291,48 @@ Consumers can:
 ##### Clone the project from here: https://github.com/manuelbomi/Apache-Kafka-Enterprise-Microservices-Platform-on-Kubernetes.git
 
 ##### cd to the rook of the project
+
+---
+
+##### Set up Docker images for producer and consumers
+
+#### Each consumer and the producer need their own Docker image. Open your terminal in the root project folder.
+
+####  Build Producer image
+
+```python
+cd producer
+docker build -t kafka-producer:latest .
+```
+
+---
+
+####  Build Consumers images
+
+#### Do this for each consumer:
+
+- Orders consumer
+
+```python
+cd ../consumers
+docker build -t orders-consumer:latest -f Dockerfile .
+```
+
+
+- Payments consumer
+  
+```python
+docker build -t payments-consumer:latest -f Dockerfile .
+```
+
+
+- Shipping consumer
+
+```python
+docker build -t shipping-consumer:latest -f Dockerfile .
+```
+
+---
 
 
 ##### On the PyCharm (or VSCode) terminal, at the root of the project, run the folloiwng codes
