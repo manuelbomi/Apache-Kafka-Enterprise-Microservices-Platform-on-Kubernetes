@@ -175,5 +175,29 @@ Consumers can:
 
 ##### Multiple instances of the same service can scale horizontally without duplicate processing.
 
+---
+
+## Why Kafka KRaft (No Zookeeper)?
+
+#### This project uses pure Apache Kafka KRaft mode, not Bitnami or Zookeeper.
+
+##### Benefits:
+
+- Simpler architecture
+
+- Fewer moving parts
+
+- Official Kafka future direction
+
+- Production-ready controller quorum
+
+> [!TIP] This is not a toy Kafka setup — it mirrors modern Kafka deployments.
+>
+---
+
+
+
+
+
 
 
