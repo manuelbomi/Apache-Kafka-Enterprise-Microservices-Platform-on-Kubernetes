@@ -143,5 +143,37 @@ Code: producer.py
 
 - Simulates upstream enterprise systems (web apps, APIs, ERP systems)
 
+---
+
+## Why Apache Kafka?
+
+#### ◑ Apache Kafka is the backbone of enterprise data platforms because it provides:
+
+- High Throughput & Low Latency
+
+- Millions of events per second with minimal overhead.
+
+#### ▩ Durability & Fault Tolerance
+
+- Replicated partitions
+
+- Data persisted on disk
+
+- Broker failures are tolerated
+
+#### ◙ Replayability
+
+Consumers can:
+
+- Rewind offsets
+
+- Reprocess historical data
+
+- Recover from failures
+
+#### ◑ Consumer Groups
+
+##### Multiple instances of the same service can scale horizontally without duplicate processing.
+
 
 
